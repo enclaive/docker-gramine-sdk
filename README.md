@@ -14,27 +14,29 @@ Install the docker engine
 ## Build image
 Run the command
 ```
-docker build -t ubuntu20.04-gramineSDK -f ubuntu20.04-gramineSDK.dockerfile . 
+docker build -t ubuntu20.04-gramine-sdk -f ubuntu20.04-gramineSDK.dockerfile . 
 ```
 
 ## Run the container
 Run the command
 ```
 # first time create a container name myGramineSDK
-docker run -it 
-  --name myGramineSDK
-  --device=/dev/sgx_enclave
-  -v ./manifest:/manifest
-  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket 
-  ubuntu20.04-gramineSDK
-
-# thereafter invoke the container myGramineSDK
-docker run -it 
-  --device=/dev/sgx_enclave
-  -v ./manifest:/manifest
-  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket
-  myGramineSDK
+docker run -it \
+  --device=/dev/sgx_enclave \
+  -v manifest:/manifest \
+  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \ 
+  ubuntu20.04-gramine-sdk
 ```
+## Test for SGX-readiness
+Test if your hosting OS has the SGX drivers properly installed
+```
+docker run -it \
+  --device=/dev/sgx_enclave \
+  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \
+  --entrypoint is-sgx-available \ 
+  ubuntu20.04-gramine-sdk
+```
+Check for flags `SGX1`, `SGX driver loaded` and `AESMD installed`.
 
 ## Structure
 Once you have build the container you have the following structure within the myGramineSDK container
@@ -43,7 +45,7 @@ Once you have build the container you have the following structure within the my
 --\manifest                     # place your manifest here (shared volume)
 --\entrypoint                   # place your build folder here
 --\scripts                      # a bunch of helpful build scripts
---\sgx-signer-key\enlaive.pem   # key to sign the enclave
+--\sgx-signer-key\enclaive.pem  # key to sign the enclave
 --\templates                    # copy manifest template to \manifest\myApp.manifest.template
 ```
 ## How to build an enclave
