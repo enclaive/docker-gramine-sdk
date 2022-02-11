@@ -20,8 +20,6 @@ docker build -t ubuntu20.04-gramineSDK -f ubuntu20.04-gramineSDK.dockerfile .
 ## Run the container
 Run the command
 ```
-docker build -t ubuntu20.04-gramineSDK -f ubuntu20.04-gramineSDK.dockerfile . 
-```
 # first time create a container name myGramineSDK
 docker run -it 
   --name myGramineSDK
