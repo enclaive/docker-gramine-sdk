@@ -37,14 +37,40 @@ docker run -it \
 ```
 Check for flags `SGX1`, `SGX driver loaded` and `AESMD installed`.
 
-## Structure
+## SDK file structure
 Once you have build the container you have the following structure within the myGramineSDK container
 ```
 \-                              
 --\manifest                     # place your manifest here (shared volume)
---\entrypoint                   # place your build folder here
+--\entrypoint                   # place your build here
 --\scripts                      # a bunch of helpful build scripts
 --\sgx-signer-key\enclaive.pem  # key to sign the enclave
 --\templates                    # copy manifest template to \manifest\myApp.manifest.template
 ```
-## How to build an enclave
+## How to build an enclave within the container
+Build the project in folder `\entrypoint`
+```
+cd gramine-sdk/sample
+make
+make check                      # [Success] if compilation went through
+cp helloword /entrypoint
+```
+Create a manifest in folder `/manifest`
+```
+cp gramine-sdk/templates/helloworld.manifest.template
+```
+Generate the enclave 
+```
+gramine-manifest \
+      -Dlog-level=error \
+      /manifest/helloworld.manifest.template /manifest/helloworld.manifest
+      
+gramine-sgx-sign \
+	    --key /gramine-sdk/sgx-signer-key/enclaive-key.pem \
+	    --manifest /manifest/helloworld.manifest \
+	    --output /manifest/helloworld.manifest.sgx
+```
+Run the enclave
+```
+gramine-sgx /manifest/helloword
+```
