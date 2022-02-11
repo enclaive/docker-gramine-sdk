@@ -20,10 +20,9 @@ docker build -t ubuntu20.04-gramine-sdk -f ubuntu20.04-gramineSDK.dockerfile .
 ## Run the container
 Run the command
 ```
-# first time create a container name myGramineSDK
 docker run -it \
   --device=/dev/sgx_enclave \
-  -v manifest:/manifest \
+  -v $(pwd)/manifest:/manifest \
   -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \ 
   ubuntu20.04-gramine-sdk
 ```
