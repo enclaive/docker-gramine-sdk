@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y gramine
 ## setup build environment
 ENV PATH="/gramine-sdk/scripts/:${PATH}"
 ENV ENTRYPOINT="/entrypoint"
-ENV SGX-SIGNER-KEY="/gramine-sdk/sgx-signer-key/enclaive-key.pem"
+ENV SGX_SIGNER_KEY="/gramine-sdk/sgx-signer-key/enclaive-key.pem"
 
 COPY templates/ /gramine-sdk/templates
 COPY scripts /gramine-sdk/scripts
