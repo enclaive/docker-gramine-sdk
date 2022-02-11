@@ -22,6 +22,7 @@ COPY scripts /gramineSDK/scripts
 COPY sample /gramineSDK/sample
 RUN chmod +x /gramineSDK/scripts/
 RUN /gramineSDK/scripts/setup.sh # generate sgx-signer-key
-RUN mkdir /entrypoint  # copy binary here
+RUN mkdir /entrypoint  # add binary here
+RUN mkdir /manifest  # add manifest here
 
 ENTRYPOINT ["/bin/bash"]
