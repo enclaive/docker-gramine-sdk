@@ -57,20 +57,25 @@ cp helloword /entrypoint
 ```
 Create a manifest in folder `/manifest`
 ```
-cp gramine-sdk/templates/helloworld.manifest.template
+cp gramine-sdk/templates/helloworld.manifest.template .
 ```
 Generate the enclave 
 ```
 gramine-manifest \
-      -Dlog-level=error \
+      -Dlog_level=error \
       /manifest/helloworld.manifest.template /manifest/helloworld.manifest
       
+cd /entrypoint
+
 gramine-sgx-sign \
 	    --key /gramine-sdk/sgx-signer-key/enclaive-key.pem \
 	    --manifest /manifest/helloworld.manifest \
 	    --output /manifest/helloworld.manifest.sgx
+
+gramine-sgx-get-token -s /manifest/helloworld.sig -o /manifest/helloworld.token
+
 ```
 Run the enclave
 ```
-gramine-sgx /manifest/helloword
+gramine-sgx /manifest/helloworld
 ```

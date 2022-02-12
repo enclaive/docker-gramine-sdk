@@ -1,5 +1,5 @@
 #! /bin/bash
-mkdir /gramineSDK/sgx-signer-key/
-openssl genrsa -3 -out /gramineSDK/sgx-signer-key/enclaive-key.pem 3072
+mkdir /gramine-sdk/sgx-signer-key/
+openssl genrsa -3 -out /gramine-sdk/sgx-signer-key/enclaive-key.pem 3072
 
 

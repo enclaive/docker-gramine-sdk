@@ -11,11 +11,15 @@ fs.mount.lib.type = "chroot"
 fs.mount.lib.path = "/lib"
 fs.mount.lib.uri = "file:{{ gramine.runtimedir() }}"
 
+fs.mount.app.type = "chroot"
+fs.mount.app.path = "/entrypoint/helloworld"
+fs.mount.app.uri = "file:/entrypoint/helloworld"
+
 sgx.debug = true
 sgx.nonpie_binary = true
 
 sgx.trusted_files = [
   "file:{{ gramine.libos }}",
-  "file:helloworld",
+  "file:/entrypoint/helloworld",
   "file:{{ gramine.runtimedir() }}/",
 ]
