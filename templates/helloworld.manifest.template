@@ -1,9 +1,9 @@
 # Hello World manifest file example
 
 loader.entrypoint = "file:{{ gramine.libos }}"
-libos.entrypoint = "helloworld"
+libos.entrypoint = "entrypoint/helloworld"
 loader.log_level = "{{ log_level }}"
-loader.argv0_override = "helloworld"
+loader.argv0_override = "/entrypoint/helloworld"
 
 loader.env.LD_LIBRARY_PATH = "/lib"
 

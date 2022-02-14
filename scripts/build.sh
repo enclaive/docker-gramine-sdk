@@ -1,0 +1,8 @@
+#! /bin/bash
+
+if [ -n "$1" ]; then
+    source /gramine-sdk/scripts/manifest.sh $1
+    source /gramine-sdk/scripts/entrypoint.sh $1  
+else
+    echo "Manifest: argument missing"
+fi
