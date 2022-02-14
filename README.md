@@ -6,7 +6,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Twitter][twitter-shield]][twitter-url]
 
 
 
@@ -38,13 +38,13 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
+
   <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#why">Why</a></li>
       </ul>
     </li>
     <li>
@@ -61,7 +61,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
+
 
 
 
@@ -74,6 +74,9 @@ The aim of this project is a standardized build environment to ease the developm
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Why
+
+Application enclavation is a fragile and delicate task. Specifically the debugging of the manifest file is an iterative and time-consuming process. Common pitfuls are the wrong linking of (dynamic) libraries, folders and files. To speed of the process the gramineSDK advocates a blueprint of how to strucutre and enclave applications. In addition, the SDK comes with a bunch of command line tools to speed the debugging and enclavation.
 
 <!--
 ### Built With
@@ -285,11 +288,11 @@ This project greatly celebrates all contributions from the gramine team. Special
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/enclaive/docker-gramineSDK/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/enclaive/docker-gramineSDK/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[twitter-shield]: https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fenclaive_io
+[twitter-url]: https://twitter.com/enclaive_io
 [product-screenshot]: images/screenshot.png
