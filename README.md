@@ -179,7 +179,7 @@ cp helloworld /entrypoint
 ```
 Create a manifest in folder `/manifest`
 ```
-cp gramine-sdk/templates/helloworld.manifest.template .
+cp /gramine-sdk/templates/helloworld.manifest.template /manifest
 ```
 Configure and sign the enclave 
 ```
