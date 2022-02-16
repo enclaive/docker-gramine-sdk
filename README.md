@@ -124,15 +124,6 @@ docker build \
   -f ubuntu20.04-gramineSDK.dockerfile . 
 ```
 
-Run container
-```
-docker run -it \
-  --device=/dev/sgx_enclave \
-  -v $(pwd)/manifest:/manifest \
-  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \ 
-  ubuntu20.04-gramine-sdk
-```
-
 To see if the hosting OS provisioned the Intel SGX driver `/dev/sgx_enclave`, run 
 ```
 docker run -it \
@@ -142,10 +133,24 @@ docker run -it \
   ubuntu20.04-gramine-sdk
 ```
 and check flags `SGX1`, `SGX driver loaded` and `AESMD installed` are `true`.
+				
+Run container
+```
+docker run -it \
+  --device=/dev/sgx_enclave \
+  -v $(pwd)/manifest:/manifest \
+  -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \
+  --name mygraminesdk
+  ubuntu20.04-gramine-sdk
+```
+
+Restart stateful container
+```
+docker start -i mygraminesdk
+```
+Helpful if you want to continue working with the last changes made (e.g. installed dependencies, applications, other tools)
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
+				
 <!-- USAGE EXAMPLES -->
 ## Usage
 
