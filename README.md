@@ -286,6 +286,7 @@ This project greatly celebrates all contributions from the gramine team. Special
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!--				
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
@@ -299,3 +300,4 @@ This project greatly celebrates all contributions from the gramine team. Special
 [twitter-shield]: https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fenclaive_io
 [twitter-url]: https://twitter.com/enclaive_io
 [product-screenshot]: images/screenshot.png
+-->
