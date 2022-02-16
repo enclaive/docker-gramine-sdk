@@ -24,7 +24,6 @@
     <br>
     #intelsgx # confidentialcompute
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#usage>Example</a>
@@ -70,13 +69,12 @@
 
 <!--[![Product Name Screen Shot][product-screenshot]](https://enclaive.io) -->
 
-The aim of this project is a standardized build environment to ease the development of SGX-ready applications along tools and scripts. Note, the SDK aims to help with building and testing the `manifest.template` as well as debugging the enclave. Once the manifest is in place, you may want a self-contained container of your application. Please read [here](https://github.com/enclaive/docker-gramineOS).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+The aim of this project is a standardized build environment to ease the development of SGX-ready applications along tools and scripts. Note, the SDK aims to help with building and testing the `manifest.template` as well as debugging the enclave. Once the manifest is in place, you may want a self-contained container of your application. 
 
 ### Why
 
 Application enclavation is a fragile and delicate task. Specifically the debugging of the manifest file is an iterative and time-consuming process. Common pitfuls are the wrong linking of (dynamic) libraries, folders and files. To speed of the process the gramineSDK advocates a blueprint of how to strucutre and enclave applications. In addition, the SDK comes with a bunch of command line tools to speed the debugging and enclavation.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!--
 ### Built With
@@ -265,7 +263,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Sebastian Gajek - [@sebgaj](https://twitter.com/sebgaj) - sebastianl@enclaive.io
+Sebastian Gajek - [@sebgaj](https://twitter.com/sebgaj) - sebastian@enclaive.io
 
 Web Site: [https://enclaive.io](https://enclaive.io)
 
@@ -291,13 +289,13 @@ This project greatly celebrates all contributions from the gramine team. Special
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: 
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/enclaive/docker-gramineSDK/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
 [issues-url]: https://github.com/enclaive/docker-gramineSDK/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-url]:  https://github.com/enclaive/docker-gramineSDK/LICENSE
 [twitter-shield]: https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2Fenclaive_io
 [twitter-url]: https://twitter.com/enclaive_io
 [product-screenshot]: images/screenshot.png
