@@ -5,7 +5,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![LGPL License][license-shield]][license-url]
+[![Apache 2.0 License][license-shield]][license-url]
 [![Twitter][twitter-shield]][twitter-url]
 
 
@@ -263,7 +263,7 @@ Don't forget to give the project a star! Spread the word on social media! Thanks
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU Lesser General Public License v3.0 License. See `LICENSE` for more information.
+Distributed under the Apache License 2.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
