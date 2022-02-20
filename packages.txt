@@ -2,5 +2,6 @@ libprotobuf-c1
 build-essential
 curl
 nano
-vim 
+vim
+git 
 

@@ -7,6 +7,7 @@ if [ -n "$1" ]; then
 
 	gramine-manifest \
       -Dlog_level=error \
+	  -Darch_libdir=/lib/x86_64-linux-gnu \
       $1.manifest.template $1.manifest
       
 	gramine-sgx-sign \

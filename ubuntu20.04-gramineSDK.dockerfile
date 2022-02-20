@@ -17,6 +17,7 @@ COPY templates/ /gramine-sdk/templates
 COPY sample /gramine-sdk/sample
 COPY scripts /gramine-sdk/scripts
 RUN . /gramine-sdk/scripts/setup.sh  
+ENV PATH=${PATH}:/gramine-sdk/scripts
 
 # cleaning up
 RUN rm -f packages.txt /gramine-sdk/script/setup.sh 
