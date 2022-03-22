@@ -2,7 +2,7 @@
 
 loader.entrypoint = "file:{{ gramine.libos }}"
 libos.entrypoint = "entrypoint/helloworld"
-loader.log_level = "{{ log_level }}"
+loader.log_level = "all"
 loader.argv0_override = "/entrypoint/helloworld"
 
 loader.env.LD_LIBRARY_PATH = "/lib"

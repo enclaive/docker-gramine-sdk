@@ -3,5 +3,10 @@ build-essential
 curl
 nano
 vim
-git 
-
+git
+net-tools
+nmap 
+gdb
+strace
+ltrace
+errno

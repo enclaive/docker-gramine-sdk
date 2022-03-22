@@ -1,13 +1,11 @@
 #! /bin/bash
 
 if [ -n "$1" ]; then
-  cd /manifest
-
+  
 	test -f $1.manifest && rm *.sig *.token *.sgx *.manifest
 
 	gramine-manifest \
-      -Dlog_level=error \
-	  -Darch_libdir=/lib/x86_64-linux-gnu \
+      -Darch_libdir=/lib/x86_64-linux-gnu \
       $1.manifest.template $1.manifest
       
 	gramine-sgx-sign \

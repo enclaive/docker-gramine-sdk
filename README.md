@@ -5,7 +5,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![Apache 2.0 License][license-shield]][license-url]
+[![LGPL License][license-shield]][license-url]
 [![Twitter][twitter-shield]][twitter-url]
 
 
@@ -63,6 +63,13 @@ The aim of this project is a standardized build environment to ease the developm
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- TL;DR -->
+## TL;DR
+```
+docker-compose up -d
+docker-compose exec gramine-sdk bash
+```
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -116,41 +123,43 @@ Add your favorite tools to `packages.txt` list
 libprotobuf-c1      # mandatory
 build-essential     # mandatory
 curl                # mandatory
-nano
+nano vim            # editors
+net-tools nmap      # network debugging 
+gdb strace ltrace   # trace debugging
+errno               # error codes
 ```
 Build image
 ```
 docker build \  
-  -t ubuntu20.04-gramine-sdk \
-  -f ubuntu20.04-gramineSDK.dockerfile . 
+  -t enclaive/gramine-sdk \
+  -f ubuntu20.04-gramine-sdk.dockerfile . 
 ```
-
+### Test Installation
 To see if the hosting OS provisioned the Intel SGX driver `/dev/sgx_enclave`, run 
 ```
 docker run -it \
   --device=/dev/sgx_enclave \
   -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \
   --entrypoint is-sgx-available \ 
-  ubuntu20.04-gramine-sdk
+  enclaive/gramine-sdk
 ```
 and check flags `SGX1`, `SGX driver loaded` and `AESMD installed` are `true`.
-				
-Run container
+
+### (Repetative) Usage 
+
+Run the container
 ```
 docker run -it \
   --device=/dev/sgx_enclave \
   -v $(pwd)/manifest:/manifest \
   -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \
-  --name mygraminesdk
-  ubuntu20.04-gramine-sdk
+  --name gramine-sdk
+  enclaive/gramine-sdk
 ```
-
-Restart container
+Sometimes it is handy to continue with the last container state (e.g. installed dependencies, applications, other tools). To this end, run the command
 ```
-docker start -i mygraminesdk
+docker start -i gramine-sdk
 ```
-Useful to continue working with the last changes made (e.g. installed dependencies, applications, other tools)
-
 Optional: Shared volume `/manifest`may be tricky to use when host and container have varying permissions. Change permissions
 ```
 chown -R 777 ./manifest
@@ -167,7 +176,7 @@ Once you have build the container you have the following structure within the my
 -/                              
 --/manifest                     # place the manifest here (shared volume)
 --/entrypoint                   # place the build here
---/scripts                      # a bunch of helpful scripts, incl. manifest, launch & build
+--/scripts                      # a bunch of helpful scripts, incl. sign, launch & relaunch
 --/scripts/ssl                  # script to create self-signed SSL/TLS certicate (e.g. for server applications)
 --/sgx-signer-key/enclaive.pem  # key to sign the enclave ($SGX_SIGNER_KEY)
 --/templates                    # copy manifest template to /manifest/myApp.manifest.template
@@ -176,9 +185,9 @@ Once you have build the container you have the following structure within the my
 ### SDK structure
 The following commands are available to ease the enclavation of an application
 ```
-manifest <entrypoint>           # generates signed manifest from  /manifest/<entrypoint>.manifest.template
+sign <entrypoint>               # generates signed manifest from  /manifest/<entrypoint>.manifest.template
 launch <entrypoint>             # launches /entrypoint/<entrypoint> in an enclave
-build <entrypoint>              # invocation of manifest & launch
+relaunch <entrypoint>           # invocation of sign & launch
 ```
 Remark: Gramine supports the enclavation of binaries only. `<entrypoint>` must be the name of the binary. Scripts (e.g. bash, python) are invoked by running the interpreter (e.g. `/bin/bash`) and passing `myscript.sh` as argument.  
 
@@ -197,15 +206,12 @@ cp /gramine-sdk/templates/helloworld.manifest.template /manifest
 Configure and sign the enclave 
 ```
 # SDK
-manifest helloworld
+sign helloworld
 
-# 'manifest' calls  
-
-cd /manifest
+# 'sign' calls  
 
 gramine-manifest \
-      -Dlog_level=error \
-      helloworld.manifest.template helloworld.manifest
+        helloworld.manifest.template helloworld.manifest
       
 gramine-sgx-sign \
 	    --key $SGX_SIGNER_KEY \
@@ -263,7 +269,7 @@ Don't forget to give the project a star! Spread the word on social media! Thanks
 <!-- LICENSE -->
 ## License
 
-Distributed under the Apache License 2.0 License. See `LICENSE` for more information.
+Distributed under the GNU Lesser General Public License v3.0 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
