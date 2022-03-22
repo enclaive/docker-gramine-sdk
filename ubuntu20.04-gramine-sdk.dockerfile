@@ -30,7 +30,7 @@ RUN echo "alias relaunch='/gramine-sdk/scripts/relaunch.sh'" >> ~/.bashrc
 
 COPY scripts/sign.sh .
 RUN chmod +x sign.sh 
-RUN echo "alias sign='/manifest/sign.sh'" >> ~/.bashrc
+RUN echo "alias sign='/gramine-sdk/scripts/sign.sh'" >> ~/.bashrc
 
 
 ENTRYPOINT ["/bin/bash"]
