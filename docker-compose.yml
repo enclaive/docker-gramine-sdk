@@ -12,6 +12,7 @@ services:
       - ./manifest:/manifest      # support manifest editing from host
     ports:
       - '5000:5000'               # add ports for deamons
+      - '22:22'                   # ssh
     devices:
       - "/dev/sgx_enclave:/dev/sgx_enclave"
     networks:

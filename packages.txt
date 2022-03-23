@@ -1,5 +1,6 @@
 libprotobuf-c1 
 build-essential
+openssh-server
 curl
 nano
 vim
