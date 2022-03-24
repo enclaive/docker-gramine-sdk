@@ -11,6 +11,8 @@ services:
       - /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket
       - ./manifest:/manifest      # support manifest editing from host
     ports:
+      - '80:80'
+      - '443:443'
       - '5000:5000'               # add ports for deamons
       - '22:22'                   # ssh
     devices:
