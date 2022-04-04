@@ -1,0 +1,1 @@
+deb [trusted=yes arch=amd64] file:/opt/sgx_debian_local_repo impish main

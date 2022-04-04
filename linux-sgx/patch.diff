@@ -1,0 +1,56 @@
+diff --git a/linux/installer/common/sgx-aesm-service/Makefile b/linux/installer/common/sgx-aesm-service/Makefile
+index 2b3d942a..bf78ac15 100644
+--- a/linux/installer/common/sgx-aesm-service/Makefile
++++ b/linux/installer/common/sgx-aesm-service/Makefile
+@@ -42,14 +42,10 @@ AESMD_CONF_DEL=$(if $(wildcard /run/systemd/system/.*),aesmd.conf,$(if $(wildcar
+ AESMD_CONF_PATH=$(if $(wildcard /run/systemd/system/.*),$(if $(wildcard /lib/systemd/system/.*),/lib/systemd/system,/usr/lib/systemd/system),$(if $(wildcard /etc/init/.*),/etc/init/))
+ 
+ ifeq ($(AESMD_CONF_NAME),)
+-ifneq ($(shell awk -F/ '$$2 == "docker"' /proc/self/cgroup),)
+ AESMD_CONF_NAME=aesmd.service
+ AESMD_CONF_DEL=aesmd.conf
+ AESMD_CONF_PATH=/lib/systemd/system
+ $(warning "You may need to start aesmd manually after it's installed!")
+-else
+-$(error "Unsupported platform - neither systemctl nor initctl is found!")
+-endif
+ endif
+ 
+ default:
+diff --git a/linux/installer/deb/local_repo_tool/conf/distributions b/linux/installer/deb/local_repo_tool/conf/distributions
+index 2f9137fc..b7f6ddf6 100644
+--- a/linux/installer/deb/local_repo_tool/conf/distributions
++++ b/linux/installer/deb/local_repo_tool/conf/distributions
+@@ -29,3 +29,11 @@ Architectures: amd64
+ Components: main
+ Description: ubuntu/hirsute repository for SGX PSW
+ DebIndices: Packages .
++
++Origin: Intel Corporation
++Label: Intel Corporation
++Codename: impish
++Architectures: amd64
++Components: main
++Description: ubuntu/impish repository for SGX PSW
++DebIndices: Packages .
+diff --git a/psw/ae/qe/quoting_enclave.cpp b/psw/ae/qe/quoting_enclave.cpp
+index 78a0c27b..2396989c 100644
+--- a/psw/ae/qe/quoting_enclave.cpp
++++ b/psw/ae/qe/quoting_enclave.cpp
+@@ -294,11 +294,11 @@ uint32_t verify_blob(
+     if(SGX_TRUSTED_EPID_BLOB_SIZE_SDK != blob_size)
+         return QE_PARAMETER_ERROR;
+ 
+-	//
+-	// if we mispredict here and blob_size is too
+-	// small, we might overflow
+-	//
+-	sgx_lfence();
++    //
++    // if we mispredict here and blob_size is too
++    // small, we might overflow
++    //
++    sgx_lfence();
+ 
+     if(!sgx_is_within_enclave(p_blob, blob_size))
+         return QE_PARAMETER_ERROR;
