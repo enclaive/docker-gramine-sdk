@@ -74,5 +74,5 @@ To update them
 git diff psw/ linux/installer/ > linux-sgx/patch.diff
 
 # for untracked files, create the original in a/ and modification in b/
-diff -r a/ b/ > linux-sgx/external.diff
+diff -Naur a/ b/ > linux-sgx/external.diff
 ```
