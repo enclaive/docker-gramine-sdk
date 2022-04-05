@@ -29,6 +29,7 @@ dmesg | grep -i sgx
 # these devices should exist on your host
 ls /dev/sgx_*
 > /dev/sgx_enclave  /dev/sgx_provision  /dev/sgx_vepc
+# the aesmd uses /dev/sgx/enclave, which is just a symlink to sgx_enclave
 ```
 
 The requirements of the in-kernel driver are described here: [Intel(R) SGX Software Installation Guide](https://download.01.org/intel-sgx/sgx-linux/2.15.1/docs/Intel_SGX_SW_Installation_Guide_for_Linux.pdf#page=5)
