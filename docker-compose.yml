@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  debug-sgx:
+    image: enclaive/debug-sgx
+    build:
+      context: .
+      dockerfile: impish-sgx-prebuilt.dockerfile
+
+  debug-gramine:
+    image: enclaive/debug-gramine
+    build:
+      context: .
+      dockerfile: impish-gramine-build.dockerfile
+
+  debug-env:
+    image: enclaive/debug-env:latest
+    container_name: "debug-env"
+    build:
+      context: .
+      dockerfile: impish-debug-env.dockerfile
+    devices:
+#      - "/dev/sgx_vepc:/dev/sgx_vepc"
+#      - "/dev/sgx_provision:/dev/sgx_provision"
+#      - "/dev/sgx_enclave:/dev/sgx_enclave"
+      - "/dev/sgx/enclave:/dev/sgx/enclave"
+    stdin_open: true              # docker run -i
+    tty: true                     # docker run -t

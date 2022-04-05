@@ -4,8 +4,7 @@ This branch contains `Dockerfile`s for building and using the Intel(R) SGX SDK a
 
 ## TODO
 
-- built a container containing `gramine` in debug-mode
-- add debug tools inside the container
+- setup gdb extensions
 
 ## Requirements
 
@@ -41,31 +40,27 @@ For additonal information about FLC, visit: https://gramine.readthedocs.io/en/la
 To build the container:
 
 ```bash
-docker build -t IMAGE_NAME_HERE -f impish-sgx-build.dockerfile .
+docker build -t enclaive/debug-sgx -f impish-sgx-build.dockerfile .
 ```
 
 After building, you should copy the created files to your host:
 
 ```bash
-id=$(docker create IMAGE_NAME_HERE)
+id=$(docker create enclaive/debug-sgx)
 docker cp $id:/home/user/linux-sgx/linux/installer/bin/sgx_linux_x64_sdk_2.15.101.1.bin .
 docker cp $id:/opt/sgx_debian_local_repo .
 docker rm -v $id
 ```
 
-This way, minor modifications be made (packages etc.) without waiting for the build every time:
-
-```bash
-docker build -t IMAGE_NAME_HERE -f impish-sgx-prebuilt.dockerfile .
-```
+To build all three images at once, use `docker-compose build`. This will use the `prebuilt`-`dockerfile`, so make sure these files exists. This way, minor modifications can be made (packages etc.) without waiting for the build every time.
 
 ## Usage
 
-TBD
+After building `enclaive/debug-env`, you can either start it manually or with `docker-compose up -d debug-env`, then attach a shell using `docker-compose exec debug-env /bin/bash`. This will duplicate the shell from `debug-env/entrypoint.sh`, which is used as a shortcut when manually running the container using `docker` and for keeping the container alive after the `aesm_service` forked itself and exited.
 
 ## Versions
 
-This build was tested on `5.13.0-39-generic` (Ubuntu 21.10) using the latest commit `0af6a83e` (11.3.2022, last tag: `sgx_2.15.1`) of the `intel/linux-sgx` repository and `docker` with version `1.5-2`.
+This build was tested on `5.13.0-39-generic` (Ubuntu 21.10) using the latest commit `0af6a83e` (11.3.2022, last tag: `sgx_2.15.1`) of the `intel/linux-sgx` repository and `docker` with version `1.5-2`. The `gramine` repository is `enclaive/gramine` using the latest commit on the default branch.
 
 ## Additional information
 

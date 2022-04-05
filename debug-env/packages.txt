@@ -1,0 +1,5 @@
+gdb
+ltrace
+procps
+strace
+valgrind
