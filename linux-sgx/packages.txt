@@ -8,6 +8,7 @@ libcurl4-openssl-dev
 libprotobuf-dev
 libssl-dev
 libtool
+linux-libc-dev
 lsb-release
 ocaml
 ocamlbuild
