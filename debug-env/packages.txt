@@ -1,4 +1,6 @@
+curl
 gdb
+libprotobuf-c1
 ltrace
 procps
 strace
