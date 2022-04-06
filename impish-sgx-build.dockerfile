@@ -15,13 +15,13 @@ RUN git clone https://github.com/intel/linux-sgx.git
 WORKDIR ./linux-sgx
 RUN git checkout 0af6a83e
 
-RUN make preparation
+RUN make -j preparation
 
 USER root
 RUN cp external/toolset/ubuntu20.04/* /usr/local/bin
 
 USER user
-RUN make sdk_install_pkg DEBUG=1
+RUN make -j sdk_install_pkg DEBUG=1
 RUN ./linux/installer/bin/sgx_linux_x64_sdk_2.15.101.1.bin --prefix install
 
 USER root
@@ -31,7 +31,7 @@ USER user
 COPY linux-sgx/patch.diff .
 RUN git apply patch.diff
 
-RUN cd psw/ae/le/ && make && cd ../pve/ && make && cd ../pce/ && make && cd ../qe/ && make
+RUN cd psw/ae/le/ && make -j && cd ../pve/ && make -j && cd ../pce/ && make -j && cd ../qe/ && make -j
 
 COPY linux-sgx/external.diff .
 RUN git apply external.diff
