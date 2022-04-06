@@ -1,8 +1,8 @@
 diff -Naur a/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile b/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile
---- a/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile	2022-04-04 17:46:38.502908427 +0000
-+++ b/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile	2022-04-04 17:46:57.475013835 +0000
+--- a/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile	2022-04-06 18:57:39.130183735 +0000
++++ b/external/dcap_source/tools/SGXPlatformRegistration/package/installer/common/sgx-ra-service/Makefile	2022-04-06 18:58:06.510283952 +0000
 @@ -42,13 +42,9 @@
- RAD_CONF_PATH=$(if $(wildcard /run/systemd/system/.*),$(if $(wildcard /lib/systemd/system/.*),/lib/systemd/system,/usr/lib/systemd/system),$(if $(wildcard /etc/init/.*),/etc/init/))
+ RAD_CONF_PATH=$(if $(wildcard /run/systemd/system/.),$(if $(wildcard /lib/systemd/system/.),/lib/systemd/system,/usr/lib/systemd/system),$(if $(wildcard /etc/init/.),/etc/init/))
  
  ifeq ($(RAD_CONF_NAME),)
 -ifneq ($(shell awk -F/ '$$2 == "docker"' /proc/self/cgroup),)

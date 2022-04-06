@@ -1,5 +1,5 @@
 diff --git a/linux/installer/common/sgx-aesm-service/Makefile b/linux/installer/common/sgx-aesm-service/Makefile
-index 2b3d942a..bf78ac15 100644
+index 71face18..c86ca03f 100644
 --- a/linux/installer/common/sgx-aesm-service/Makefile
 +++ b/linux/installer/common/sgx-aesm-service/Makefile
 @@ -42,14 +42,10 @@ AESMD_CONF_DEL=$(if $(wildcard /run/systemd/system/.*),aesmd.conf,$(if $(wildcar
@@ -16,7 +16,7 @@ index 2b3d942a..bf78ac15 100644
 -endif
  endif
  
- default:
+ QE_VER=1.0.0
 diff --git a/linux/installer/deb/local_repo_tool/conf/distributions b/linux/installer/deb/local_repo_tool/conf/distributions
 index 2f9137fc..b7f6ddf6 100644
 --- a/linux/installer/deb/local_repo_tool/conf/distributions
@@ -33,24 +33,3 @@ index 2f9137fc..b7f6ddf6 100644
 +Components: main
 +Description: ubuntu/impish repository for SGX PSW
 +DebIndices: Packages .
-diff --git a/psw/ae/qe/quoting_enclave.cpp b/psw/ae/qe/quoting_enclave.cpp
-index 78a0c27b..2396989c 100644
---- a/psw/ae/qe/quoting_enclave.cpp
-+++ b/psw/ae/qe/quoting_enclave.cpp
-@@ -294,11 +294,11 @@ uint32_t verify_blob(
-     if(SGX_TRUSTED_EPID_BLOB_SIZE_SDK != blob_size)
-         return QE_PARAMETER_ERROR;
- 
--	//
--	// if we mispredict here and blob_size is too
--	// small, we might overflow
--	//
--	sgx_lfence();
-+    //
-+    // if we mispredict here and blob_size is too
-+    // small, we might overflow
-+    //
-+    sgx_lfence();
- 
-     if(!sgx_is_within_enclave(p_blob, blob_size))
-         return QE_PARAMETER_ERROR;

@@ -1,4 +1,4 @@
-# ubuntu 21.10 and intel/linux-sgx 0af6a83e
+# ubuntu 21.10 and intel/linux-sgx sgx_2.16
 FROM ubuntu:impish
 
 # set to noninteractive for debconf, just in case
@@ -13,7 +13,7 @@ WORKDIR /home/user
 
 RUN git clone https://github.com/intel/linux-sgx.git
 WORKDIR ./linux-sgx
-RUN git checkout 0af6a83e
+RUN git checkout sgx_2.16
 
 RUN make -j preparation
 
@@ -22,7 +22,7 @@ RUN cp external/toolset/ubuntu20.04/* /usr/local/bin
 
 USER user
 RUN make -j sdk_install_pkg DEBUG=1
-RUN ./linux/installer/bin/sgx_linux_x64_sdk_2.15.101.1.bin --prefix install
+RUN ./linux/installer/bin/sgx_linux_x64_sdk_2.16.100.4.bin --prefix install
 
 USER root
 RUN mv install/ /opt/intel

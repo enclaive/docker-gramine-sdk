@@ -48,7 +48,7 @@ After building, you should copy the created files to your host:
 
 ```bash
 id=$(docker create enclaive/debug-sgx)
-docker cp $id:/home/user/linux-sgx/linux/installer/bin/sgx_linux_x64_sdk_2.15.101.1.bin .
+docker cp $id:/home/user/linux-sgx/linux/installer/bin/sgx_linux_x64_sdk_2.16.100.4.bin .
 docker cp $id:/opt/sgx_debian_local_repo .
 docker rm -v $id
 ```
@@ -61,7 +61,7 @@ After building `enclaive/debug-env`, you can either start it manually or with `d
 
 ## Versions
 
-This build was tested on `5.13.0-39-generic` (Ubuntu 21.10) using the latest commit `0af6a83e` (11.3.2022, last tag: `sgx_2.15.1`) of the `intel/linux-sgx` repository and `docker` with version `1.5-2`. The `gramine` repository is `enclaive/gramine` using the latest commit on the default branch.
+This build was tested on `5.13.0-39-generic` (Ubuntu 21.10) using `sgx_2.16` of `intel/linux-sgx` and `docker` with version `1.5-2`. The `gramine` repository is `enclaive/gramine` using the latest commit on the default branch.
 
 ## Additional information
 
