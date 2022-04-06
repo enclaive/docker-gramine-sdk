@@ -35,6 +35,7 @@ RUN cd psw/ae/le/ && make -j && cd ../pve/ && make -j && cd ../pce/ && make -j &
 
 COPY linux-sgx/external.diff .
 RUN git apply external.diff
+RUN make -j psw DEBUG=1
 RUN make deb_local_repo DEBUG=1
 
 USER root
