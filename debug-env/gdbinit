@@ -1,0 +1,9 @@
+define init-peda
+source ~/peda/peda.py
+end
+
+define init-gef
+source ~/gef/gef.py
+end
+
+init-peda

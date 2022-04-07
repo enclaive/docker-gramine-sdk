@@ -17,9 +17,8 @@ cd /opt/intel/sgx-aesm-service/aesm
 /bin/chown -R aesmd:aesmd /var/opt/aesmd/
 /bin/chmod 0750 /var/opt/aesmd/
 
-#strace -ff -a 128 /opt/intel/sgx-aesm-service/aesm/aesm_service 2>&1
-/opt/intel/sgx-aesm-service/aesm/aesm_service &
-AESM_PID=$!
+/opt/intel/sgx-aesm-service/aesm/aesm_service
 ################################################################################
 
+cd
 /bin/bash
