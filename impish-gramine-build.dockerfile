@@ -9,6 +9,8 @@ WORKDIR /home/user
 RUN git clone https://github.com/enclaive/gramine.git
 WORKDIR ./gramine
 
+RUN git checkout dac983b1
+
 RUN meson setup build/ \
     --buildtype=debug \
     -Ddirect=enabled \
