@@ -14,6 +14,7 @@ RUN ./sgx_linux_x64_sdk_2.16.100.4.bin --prefix /opt/intel
 
 COPY sgx_debian_local_repo/ /opt/sgx_debian_local_repo/
 COPY linux-sgx/intel-sgx-psw.list /etc/apt/sources.list.d/
-RUN apt-get update && apt-get install -y libsgx-launch libsgx-urts
+RUN apt-get update && apt-get install -y libsgx-launch libsgx-urts libsgx-dcap-quote-verify
+RUN ln -s /lib/x86_64-linux-gnu/libsgx_dcap_quoteverify.so.1 /lib/x86_64-linux-gnu/libsgx_dcap_quoteverify.so
 
 ENTRYPOINT [ "/bin/bash" ]
