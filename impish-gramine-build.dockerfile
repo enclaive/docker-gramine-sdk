@@ -15,6 +15,7 @@ RUN meson setup build/ \
     --buildtype=debug \
     -Ddirect=enabled \
     -Dsgx=enabled \
+    -Ddcap=enabled \
     -Dsgx_driver=upstream \
     -Dsgx_driver_include_path=/usr/include/x86_64-linux-gnu/
 
