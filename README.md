@@ -194,7 +194,7 @@ Remark: Gramine supports the enclavation of binaries only. `<entrypoint>` must b
 ### How to build an enclave with gramineSDK
 Build the project in folder `/entrypoint`
 ```
-cd gramine-sdk/sample
+cd /gramine-sdk/sample
 make
 make check                      # expects output [Success] 
 cp helloworld /entrypoint

@@ -43,14 +43,8 @@ RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/s
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 EXPOSE 22
 
-WORKDIR /manifest
-COPY scripts/manifest.sh .
-RUN chmod +x manifest.sh
-RUN echo "alias manifest='/manifest/manifest.sh'" >> ~/.bashrc
+WORKDIR /
 
-WORKDIR /entrypoint
-COPY scripts/enclaive.sh .
-RUN chmod +x enclaive.sh
-RUN echo "alias enclaive='/entrypoint/enclaive.sh'" >> ~/.bashrc
+RUN mkdir /entrypoint
 
 ENTRYPOINT service ssh start && bash
