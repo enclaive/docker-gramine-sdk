@@ -16,7 +16,7 @@ services:
       - '5000:5000'               # add ports for deamons
       - '22:22'                   # ssh
     devices:
-      - "/dev/sgx_enclave:/dev/sgx_enclave"
+      - "/dev/isgx:/dev/isgx"
     networks:
       vpcbr:
         ipv4_address: 10.5.0.2    # static IP address throughout development

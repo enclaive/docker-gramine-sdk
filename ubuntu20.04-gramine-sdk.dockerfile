@@ -10,6 +10,18 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY packages.txt packages.txt
 RUN apt-get update && xargs -r apt-get install -y < packages.txt 
 
+COPY gramine.txt packages.txt
+RUN apt-get update && xargs -r apt-get install -y < packages.txt 
+
+RUN wget https://raw.githubusercontent.com/intel/linux-sgx-driver/master/sgx_user.h -q -P /usr/include/x86_64-linux-gnu/
+
+Run apt-get update && apt-get install meson
+
+RUN apt-get update && apt-get install ninja-build -y
+
+COPY build.sh build.sh
+RUN useradd -m user && ./build.sh
+
 ## setup build environment
 WORKDIR /gramine-sdk/templates
 COPY templates/ .
