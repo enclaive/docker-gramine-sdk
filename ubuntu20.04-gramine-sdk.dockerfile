@@ -45,6 +45,4 @@ EXPOSE 22
 
 WORKDIR /
 
-RUN mkdir /entrypoint
-
 ENTRYPOINT service ssh start && bash
